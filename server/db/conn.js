@@ -1,5 +1,5 @@
 const { MongoClient } = require("mongodb");
-const Db = process.env.ATLAS_URI;
+const Db = "mongodb+srv://pgkmqail:pkq20021206@cpsc2600-project.gmghotz.mongodb.net/";
 const client = new MongoClient(Db);
  
 let _db;
