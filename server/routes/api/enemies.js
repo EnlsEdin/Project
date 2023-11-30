@@ -1,24 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const uuid = require('uuid');
-const enemies = require('../../EnemyList');
-const skills = require('../../SkillList');
 const dbo = require("../../db/conn");
 const ObjectId = require("mongodb").ObjectId;
 
-router.get('/', (req, res) => {
+router.get('/',(req, res) => {
     let db_connect = dbo.getDb();
     db_connect.collection("enemies").find({}).toArray().then((data) => {
-        console.log(data);
         res.json(data);
-    })
+    });
 });
 
 router.get('/skill/:id',(req,res) => {
     let db_connect = dbo.getDb();
     db_connect.collection("skills").find({enemyId: req.params.id}).toArray().then((data)=>{
         res.json(data);
-    })
+    });
 });
 
 router.post('/',(req,res) => {
@@ -33,7 +29,7 @@ router.post('/',(req,res) => {
     }
     db_connect.collection("enemies").insertOne(newEnemy).then((data)=>{
         res.json(data);
-    })
+    });
     
 });
 
@@ -49,7 +45,7 @@ router.post('/:id',(req,res) => {
     }
     db_connect.collection("skills").insertOne(newSkill).then((data)=>{
         res.json(data);
-    })
+    });
 });
 
 router.delete('/:id',(req,res)=>{
@@ -63,14 +59,14 @@ router.delete('/allSkill/:id',(req,res)=>{
     let db_connect = dbo.getDb();
     db_connect.collection("skills").deleteMany({enemyId: req.params.id}).then((data)=>{
         res.json(data);
-    })
+    });
 });
 
 router.delete('/skill/:id',(req,res)=>{
     let db_connect = dbo.getDb();
     db_connect.collection("skills").deleteOne({_id: new ObjectId(req.params.id)}).then((data)=>{
         res.json(data);
-    })
+    });
 });
 
 

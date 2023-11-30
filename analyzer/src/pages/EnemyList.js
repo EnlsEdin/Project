@@ -1,5 +1,4 @@
-import react,{useEffect,useState} from "react";
-import {Link} from "react-router-dom";
+import React,{useEffect,useState} from "react";
 import { useNavigate } from "react-router";
 import Enemy from "../components/Enemy"
 import FilterButton from "../components/FilterButton";
