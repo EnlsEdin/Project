@@ -9,7 +9,7 @@ function Enemy(props){
     }
     useEffect(()=>{
         async function getSkills(){
-          const response = await fetch(`http://localhost:3500/api/enemies/skill/${props.id}`);
+          const response = await fetch(`api/enemies/skill/${props.id}`);
           if (!response.ok) {
             const message = `An error occurred: ${response.statusText}`;
             window.alert(message);
@@ -22,7 +22,7 @@ function Enemy(props){
         return;
     },[skills.length])
     async function deleteSkill(id){
-      await fetch(`http://localhost:3500/api/enemies/skill/${id}`, {
+      await fetch(`api/enemies/skill/${id}`, {
           method: "DELETE"
       });
       const newSkills = skills.filter((e) => e._id !== id);
