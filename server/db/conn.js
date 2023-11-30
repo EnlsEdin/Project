@@ -1,10 +1,11 @@
 const { MongoClient } = require("mongodb");
-const Db = "mongodb+srv://pgkmqail:pkq20021206@cpsc2600-project.gmghotz.mongodb.net/";
+const Db = process.env.ATLAS_URI;
 const client = new MongoClient(Db);
  
 let _db;
  
 module.exports = {
+  // connect to the database
   connectToServer: async function (callback) {
     try {
       await client.connect();
@@ -14,7 +15,7 @@ module.exports = {
     _db = client.db("analyzer")
     return (_db === undefined ? false : true);
   },
- 
+  // get the database object
   getDb: function () {
       return _db;
   }

@@ -12,11 +12,13 @@ function AddSkill(){
     const navigate = useNavigate();
     const location = useLocation();
     const id = location.state.id;
+    // update the text as user entry
     function updateForm(value){
         return setForm((prev) => {
             return {...prev,...value};
         });
     }
+    // post the skill to the database
     async function onSubmit(e){
         e.preventDefault();
         const newSkill = {...form}
@@ -35,6 +37,7 @@ function AddSkill(){
         navigate('/');
     }
     return(
+        // form with skill information
        <div className='container'>
             <form onSubmit={onSubmit}>
                 <div className="form-group">

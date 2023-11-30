@@ -8,11 +8,13 @@ function AddEnemy(){
         description:"",
     })
     const navigate = useNavigate();
+    // update text as user inputs
     function updateForm(value){
         return setForm((prev) => {
             return {...prev,...value};
         });
     }
+    // post the enemy to the database
     async function onSubmit(e){
         e.preventDefault();
         const newEnemy = {...form}
@@ -31,6 +33,7 @@ function AddEnemy(){
         navigate("/");
     }
     return(
+        // form with enemy infomation
        <div className='container'>
             <form onSubmit={onSubmit}>
                 <div className="form-group">

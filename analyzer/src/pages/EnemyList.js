@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import Enemy from "../components/Enemy"
 import FilterButton from "../components/FilterButton";
 
+// use to filter type of enemies
 const FILTER_MAP = {
     All: () => true,
     Elite: (enemy) => enemy.type==="elite",
@@ -16,6 +17,7 @@ function EnemyList(){
     const [enemies,setEnemies] = useState([]);
     const [filter, setFilter] = useState("All");
     const navigate = useNavigate();
+    // get enemies from the database
     useEffect(()=>{
         async function getEnemies(){
             const response = await fetch(`api/enemies/`);
@@ -30,6 +32,7 @@ function EnemyList(){
         getEnemies();
         return;
     },[enemies.length]);
+    // delete the enemy with id, also will delete all skills with that enemy's id
     async function deleteEnemy(id){
         await fetch(`api/enemies/${id}`, {
             method: "DELETE"
@@ -40,6 +43,7 @@ function EnemyList(){
         const newEnemies = enemies.filter((e) => e._id !== id);
         setEnemies(newEnemies);
     }
+    // create and filter the enemy list
     const enemyList = enemies.filter(FILTER_MAP[filter]).map((enemy) => (
         <Enemy
             key={enemy._id}
@@ -51,9 +55,11 @@ function EnemyList(){
             deleteEnemy={() => deleteEnemy(enemy._id)}
         />
     ));
+    // create filter buttons
     const filterList = FILTER_NAMES.map((name) => (
         <FilterButton key={name} name={name} isPressed={name === filter} setFilter={setFilter} />
       ));
+    // move to the add enemy page
     function AddEnemy(){
         navigate('/AddEnemy');
     }

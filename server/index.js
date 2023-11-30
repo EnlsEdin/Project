@@ -9,6 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use('/api/enemies', require('./routes/api/enemies'));
+// use on production build
 const path = require("path")
 __dirname = path.resolve();
 app.use(express.static(path.join(__dirname,'../analyzer/build')))
@@ -17,6 +18,7 @@ app.get("*",(req,res)=>{
 })
 defaultPort = 3500;
 const PORT = process.env.PORT || defaultPort;
+// listen to the port
 app.listen(PORT,async() => {
   await dbo.connectToServer(function(err){
     if (err) console.error(err);

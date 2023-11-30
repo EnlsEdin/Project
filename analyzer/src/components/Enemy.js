@@ -4,9 +4,11 @@ function Enemy(props){
     const [skills,setSkills] = useState([]);
     const [isExpand, setExpand] = useState(false);
     const navigate = useNavigate();
+    // move the the add skill page with the enemy's id as property
     function AddSkill(id){
       navigate('/AddSkill',{state:{id}});
     }
+    // get all skills with the enemy's id
     useEffect(()=>{
         async function getSkills(){
           const response = await fetch(`api/enemies/skill/${props.id}`);
@@ -21,6 +23,7 @@ function Enemy(props){
         getSkills();
         return;
     },[skills.length])
+    // delete the skill of this enemy with the skill's id
     async function deleteSkill(id){
       await fetch(`api/enemies/skill/${id}`, {
           method: "DELETE"
@@ -28,12 +31,14 @@ function Enemy(props){
       const newSkills = skills.filter((e) => e._id !== id);
       setSkills(newSkills);
     }
+    //create skill list
     const skillList = skills.filter((skill)=>skill.enemyId === props.id).map((skill)=>(
         <div key={skill._id} id={skill._id} name={skill.name} description={skill.description}>
             <button onClick={()=>{deleteSkill(skill._id)}}>Delete</button>
             <p>{skill.name}:  {skill.description}</p>
         </div>
     ));
+    // expanded template with list of skills
     const expandTemplate = (
         <div className="displayBlock">
           <div>
@@ -56,6 +61,7 @@ function Enemy(props){
           </div>
         </div>
     );
+    // simple template
     const listTemplate = (
         <div className="displayBlock">
             <div>
