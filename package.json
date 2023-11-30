@@ -4,18 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && npm run dev",
-    "dev": "concurrently \"cd server && npm run dev\" \"cd analyzer && npm start\"",
+    "start": "npm run build && npm run server && npm run client",
+    "server": "cd server && npm start",
+    "client": "cd analyzer && npm start",
     "install": "cd server && npm i && cd ../analyzer && npm i",
     "build": "cd analyzer && npm run build",
-    "heroku-prebuild": "npm install --dev",
     "heroku-postbuild": "cd analyzer && npm install && npm run build"
   },
   "keywords": [],
   "author": "Kaiqiao Peng",
-  "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^8.2.2",
-    "nodemon": "^3.0.1"
-  }
+  "license": "ISC"
 }
