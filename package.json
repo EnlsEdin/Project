@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm install --dev && npm run install",
-    "install": "concurrently \"cd analyzer && npm install && npm run build\" \"cd server && npm install\" \"npm run dev\"",
+    "start": "npm run build && npm run dev",
     "dev": "concurrently \"cd server && npm run dev\" \"cd analyzer && npm start\"",
-    "heroku-prebuild": "npm install --dev"
+    "install": "cd server && npm i && cd ../analyzer && npm i",
+    "build": "cd analyzer && npm build",
+    "heroku-prebuild": "npm install --dev",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false"
   },
   "keywords": [],
   "author": "Kaiqiao Peng",
