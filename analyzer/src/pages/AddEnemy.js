@@ -16,7 +16,7 @@ function AddEnemy(){
     async function onSubmit(e){
         e.preventDefault();
         const newEnemy = {...form}
-        await fetch("http://localhost:3500/api/enemies/",{
+        await fetch("api/enemies/",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

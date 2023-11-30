@@ -20,7 +20,7 @@ function AddSkill(){
     async function onSubmit(e){
         e.preventDefault();
         const newSkill = {...form}
-        await fetch(`http://localhost:3500/api/enemies/${id}`,{
+        await fetch(`api/enemies/${id}`,{
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

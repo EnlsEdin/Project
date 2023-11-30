@@ -18,7 +18,7 @@ function EnemyList(){
     const navigate = useNavigate();
     useEffect(()=>{
         async function getEnemies(){
-            const response = await fetch(`http://localhost:3500/api/enemies/`);
+            const response = await fetch(`api/enemies/`);
             if (!response.ok) {
                 const message = `An error occurred: ${response.statusText}`;
                 window.alert(message);
@@ -31,10 +31,10 @@ function EnemyList(){
         return;
     },[enemies.length]);
     async function deleteEnemy(id){
-        await fetch(`http://localhost:3500/api/enemies/${id}`, {
+        await fetch(`api/enemies/${id}`, {
             method: "DELETE"
         });
-        await fetch(`http://localhost:3500/api/enemies/allSkill/${id}`,{
+        await fetch(`api/enemies/allSkill/${id}`,{
             method: "DELETE"
         });
         const newEnemies = enemies.filter((e) => e._id !== id);
