@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run dev",
-    "dev": "concurrently \"cd server && npm run dev\" \"cd analyzer && npm start\""
+    "start": "concurrently \"cd analyzer && npm run build\" \"npm run dev\"",
+    "dev": "concurrently \"cd server && npm run dev\" \"cd analyzer && npm start\"",
+    "heroku-prebuild": "npm install --dev"
   },
   "keywords": [],
   "author": "Kaiqiao Peng",
@@ -13,8 +14,5 @@
   "devDependencies": {
     "concurrently": "^8.2.2",
     "nodemon": "^3.0.1"
-  },
-  "dependencies": {
-    "body-parser": "^1.20.2"
   }
 }
