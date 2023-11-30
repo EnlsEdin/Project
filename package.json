@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"cd analyzer && npm run build\" \"npm run dev\"",
+    "start": "npm install --dev && npm run install",
+    "install": "concurrently \"cd analyzer && npm install && npm run build\" \"cd server && npm install\" \"npm run dev\"",
     "dev": "concurrently \"cd server && npm run dev\" \"cd analyzer && npm start\"",
     "heroku-prebuild": "npm install --dev"
   },
