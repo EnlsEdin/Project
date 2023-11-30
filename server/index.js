@@ -15,7 +15,8 @@ app.use(express.static(path.join(__dirname,'../analyzer/build')))
 app.get("*",(req,res)=>{
    res.sendFile(path.resolve(__dirname,"analyzer","build","index.html"));
 })
-const PORT = process.env.PORT || 3500;
+defaultPort = 3500;
+const PORT = process.env.PORT || defaultPort;
 app.listen(PORT,async() => {
   await dbo.connectToServer(function(err){
     if (err) console.error(err);
