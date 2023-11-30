@@ -8,7 +8,7 @@
     "dev": "concurrently \"cd server && npm run dev\" \"cd analyzer && npm start\"",
     "install": "cd server && npm i && cd ../analyzer && npm i",
     "heroku-prebuild": "npm install --dev",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd analyzer && npm install && npm run build"
   },
   "keywords": [],
   "author": "Kaiqiao Peng",
