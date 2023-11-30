@@ -7,6 +7,7 @@
     "start": "npm run build && npm run dev",
     "dev": "concurrently \"cd server && npm run dev\" \"cd analyzer && npm start\"",
     "install": "cd server && npm i && cd ../analyzer && npm i",
+    "build": "cd client && npm run build",
     "heroku-prebuild": "npm install --dev",
     "heroku-postbuild": "cd analyzer && npm install && npm run build"
   },

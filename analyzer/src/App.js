@@ -1,6 +1,4 @@
-import logo from './logo.svg';
 import React, { useState } from "react";
-import ReactSwitch from 'react-switch';
 import { Routes, Route} from 'react-router-dom';
 import './App.css';
 
